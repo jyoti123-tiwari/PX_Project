@@ -4,9 +4,12 @@ import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.ProposalPage;
+import utilities.TestListner;
 
+@Listeners(TestListner.class)
 public class ProposalFormTest extends BaseTest {
 
     @BeforeMethod
@@ -21,7 +24,7 @@ public class ProposalFormTest extends BaseTest {
 
         System.out.println("Page Title : " + actualTitle);
 
-        Assert.assertTrue(actualTitle.contains("PolicyX: Compare Insurance Quotes"));
+        Assert.assertTrue(actualTitle.contains("PolicyXy: Compare Insurance Quotes"));
 
     }
     @Test
@@ -38,7 +41,7 @@ public class ProposalFormTest extends BaseTest {
 
         String actualEmail = proposal.getEmailValue();
 
-        Assert.assertEquals(actualEmail, "jyoti@gmail.com");
+        Assert.assertEquals(actualEmail, "jyoti@gmailt.com");
     }
     @Test
     public void verifyGender(){

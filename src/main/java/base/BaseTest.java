@@ -8,6 +8,9 @@ import org.openqa.selenium.chrome.ChromeOptions;
 public class BaseTest {
 
     protected WebDriver driver;
+    public WebDriver getDriver() {
+        return driver;
+    }
 
     public void setup() {
 
