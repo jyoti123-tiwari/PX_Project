@@ -1,6 +1,5 @@
 package utilities;
-
-
+import  base.BaseTest;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 import org.openqa.selenium.WebDriver;
@@ -21,13 +20,19 @@ public class TestListner implements ITestListener {
                 result.getInstance();
 
         WebDriver driver =
-                ((base.BaseTest) testClass).getDriver();
+                ((BaseTest) testClass).getDriver();
 
         try {
 
-            Screenshot.captureScreenshot(
-                    driver,
-                    result.getName()
+            String screenshotPath =
+                    Screenshot.captureScreenshot(
+                            driver,
+                            result.getName()
+                    );
+
+            System.out.println(
+                    "Screenshot Path: " +
+                            screenshotPath
             );
 
         } catch (IOException e) {
@@ -36,3 +41,4 @@ public class TestListner implements ITestListener {
         }
     }
 }
+

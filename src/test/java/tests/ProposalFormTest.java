@@ -7,9 +7,10 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import pages.ProposalPage;
+import utilities.ExtentReportListener;
 import utilities.TestListner;
 
-@Listeners(TestListner.class)
+@Listeners(ExtentReportListener.class)
 public class ProposalFormTest extends BaseTest {
 
     @BeforeMethod

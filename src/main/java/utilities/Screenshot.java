@@ -3,12 +3,12 @@ package utilities;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 
-        import java.io.File;
+import java.io.File;
 import java.io.IOException;
 
 public class Screenshot {
 
-    public static void captureScreenshot(
+    public static String captureScreenshot(
             WebDriver driver,
             String testName) throws IOException {
 
@@ -36,6 +36,8 @@ public class Screenshot {
                             + destination.getAbsolutePath()
             );
 
+            return destination.getAbsolutePath();
+
         } catch (Exception e) {
 
             System.out.println(
@@ -44,6 +46,8 @@ public class Screenshot {
             );
 
             e.printStackTrace();
+
+            return null;
         }
     }
 }
