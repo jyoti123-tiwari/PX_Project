@@ -8,24 +8,42 @@ import java.io.IOException;
 
 public class Screenshot {
 
-    public static String captureScreenshot(
+    public static void captureScreenshot(
             WebDriver driver,
             String testName) throws IOException {
 
-        TakesScreenshot ts =
-                (TakesScreenshot) driver;
+        try {
 
-        File source =
-                ts.getScreenshotAs(OutputType.FILE);
+            File folder = new File("target/screenshot");
 
-        String path =
-                "target/screenshot/" + testName + ".png";
+            if (!folder.exists()) {
+                folder.mkdirs();
+            }
 
-        File destination =
-                new File(path);
+            TakesScreenshot ts =
+                    (TakesScreenshot) driver;
 
-        FileUtils.copyFile(source, destination);
+            File source =
+                    ts.getScreenshotAs(OutputType.FILE);
 
-        return path;
+            File destination =
+                    new File(folder, testName + ".png");
+
+            FileUtils.copyFile(source, destination);
+
+            System.out.println(
+                    "Screenshot saved at: "
+                            + destination.getAbsolutePath()
+            );
+
+        } catch (Exception e) {
+
+            System.out.println(
+                    "Screenshot capture failed: "
+                            + e.getMessage()
+            );
+
+            e.printStackTrace();
+        }
     }
 }
